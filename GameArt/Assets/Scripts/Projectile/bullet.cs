@@ -8,6 +8,8 @@ public class bullet : MonoBehaviour {
     public float speed;
     public Rigidbody rb;
     private PlayerController player;
+    private Health E_Health;
+    public int damage;
 
 	// Use this for initialization
 	void Start () {
@@ -40,6 +42,11 @@ public class bullet : MonoBehaviour {
     {
         if (other.CompareTag("Enemy") || other.CompareTag("Ground"))
         {
+            if (other.CompareTag("Enemy"))
+            {
+                E_Health = other.GetComponent<Health>();
+                E_Health.takeDamage(damage);
+            }
             Destroy(gameObject);
         }
     }
