@@ -64,6 +64,8 @@
     <Compile Include="Assets\Enemy_idle.cs" />
     <Compile Include="Assets\Environment\Player\player_controls.cs" />
     <Compile Include="Assets\Environment\Player\player_controls_2.cs" />
+    <Compile Include="Assets\Fear_Projectile.cs" />
+    <Compile Include="Assets\Ranged_Sight.cs" />
     <Compile Include="Assets\Scripts\Breakable\box.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraMove.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Assets\Scripts\Player\Actions\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\Actions\Shooting.cs" />
     <Compile Include="Assets\Scripts\Projectile\bullet.cs" />
+    <Compile Include="Assets\Scripts\Projectile\Fear_Rot.cs" />
     <Compile Include="Assets\Scripts\Trap\pit.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Doge/Documents/GitHub/DreamGame-Programmers-/GameArt/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

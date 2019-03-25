@@ -104,6 +104,8 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+
+
     //function for jumping 
     void Jump()
     {
