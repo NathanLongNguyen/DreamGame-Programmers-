@@ -9,11 +9,12 @@ public class Shooting : MonoBehaviour {
     float timer;
     public GameObject bullet;
     private PlayerController player;
-
+    private Animator animator;
 
 	// Use this for initialization
 	void Start () {
         player = gameObject.GetComponent<PlayerController>();
+        animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -24,6 +25,7 @@ public class Shooting : MonoBehaviour {
         {
             timer = attSpeed;
             Shoot();
+            animator.SetTrigger("RangeAtt");
         }
     }
 

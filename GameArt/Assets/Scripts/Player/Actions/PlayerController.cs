@@ -96,9 +96,11 @@ public class PlayerController : MonoBehaviour {
         {
             isGrounded = true;
             currJump = 0;
+            animator.SetBool("isJumping", false);
         } else
         {
             isGrounded = false;
+            animator.SetBool("isJumping", true);
         }
     }
 
@@ -110,7 +112,7 @@ public class PlayerController : MonoBehaviour {
             isGrounded = false;
             rb.AddForce(Vector3.up *jumpHeight, 0);
             currJump++;
-           
+            
         }
 
 
