@@ -7,69 +7,28 @@ public class Enemy_movement : MonoBehaviour {
 
     public Transform[] points;
     private int destPoint = 0;
-    private NavMeshAgent agent;
-    [SerializeField]
-    float waitTime;
-    float timer;
+    public float speed;
 
     private Melee_enemy_Sight sight;
 
     void Start()
     {
-        timer = waitTime;
-        agent = GetComponent<NavMeshAgent>();
+        
         sight = GetComponentInChildren<Melee_enemy_Sight>();
 
-        // Disabling auto-braking allows for continuous movement
-        // between points (ie, the agent doesn't slow down as it
-        // approaches a destination point).
-        //agent.autoBraking = false;
 
-        GotoNextPoint();
     }
-
-
-    void GotoNextPoint()
-    {
-        // Returns if no points have been set up
-        if (points.Length == 0)
-            return;
-
-        // Set the agent to go to the currently selected destination.
-
-        agent.destination = points[destPoint].position;
-
-
-        // Choose the next point in the array as the destination,
-        // cycling to the start if necessary.
-        destPoint = (destPoint + 1) % points.Length;
-    }
-
-
 
     void Update()
     {
-        // Choose the next destination point when the agent gets
-        // close to the current one.
-        if (!agent.pathPending && agent.remainingDistance < 0.25f)
+        transform.position = Vector3.MoveTowards(transform.position, points[destPoint].position, speed* Time.deltaTime);
+
+        if(Vector3.Distance(transform.position, points[destPoint].position) < 0.25f)
         {
-            //On_Off();
-            GotoNextPoint();
+
         }
     }
 
-    void On_Off()
-    {
-        agent.Stop();
-        timer -= Time.deltaTime;
-        Debug.Log(timer);
-        if(timer <= 0)
-        {
-            Debug.Log("Resume");
-            agent.Resume();
-            timer = waitTime;
-        }
-
-    }
+    
 
 }

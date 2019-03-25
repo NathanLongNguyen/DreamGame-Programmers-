@@ -17,19 +17,21 @@ public class PlayerController : MonoBehaviour {
     public Text winText;
     private int maxJump = 2;
     int currJump;
-
+    private Animator animator;
 
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         facingRight = true;
         //winText.text = "";
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //Debug.Log(currJump);
+        Debug.Log(isGrounded);
         Movement();
+
     }
 
     // Use FixedUpdate for physics based function
@@ -55,10 +57,12 @@ public class PlayerController : MonoBehaviour {
         if (!snappy)
         {
             move = Input.GetAxis("Horizontal");
+            animator.SetFloat("speed", Mathf.Abs(move));
         }
         else
         {
             move = Input.GetAxisRaw("Horizontal");
+            animator.SetFloat("speed", Mathf.Abs(move));
         }
 
         //move by changing the velocity of the rigidbody
@@ -73,14 +77,14 @@ public class PlayerController : MonoBehaviour {
             Flip();
         }
     }
-
+    
     //function for flipping
     void Flip()
     {
         facingRight = !facingRight; //switch true to false or false to true
-        Vector3 scale = transform.localScale; //grabbing the z value of the character
-        scale.x *= -1; //flip the object
-        transform.localScale = scale; //update the z of the character's scaling
+        Quaternion rot = transform.localRotation; //grabbing the z value of the character
+        rot.y *= -1; //flip the object
+        transform.localRotation = rot; //update the z of the character's scaling
     }
 
     //function for checking if the player is grounded
