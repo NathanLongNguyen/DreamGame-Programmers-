@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Environment/Scenes/Front_Courtyard.unity
+- path: Assets/Scenes/MidTerm Demo.unity
   isLoaded: 1
   isActive: 1
