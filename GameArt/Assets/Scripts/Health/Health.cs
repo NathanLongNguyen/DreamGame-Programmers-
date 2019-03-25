@@ -8,12 +8,14 @@ public class Health : MonoBehaviour {
     public float regenTimer; //set how fast the regen is 
     float timer;
     public int curHealth, regenRate; //regenRate is the rate at which health regens at
+    private Animator animator;
 
 
 	// Use this for initialization
 	void Start () {
         timer = regenTimer;
         curHealth = maxHealth;
+        animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -51,8 +53,16 @@ public class Health : MonoBehaviour {
     }
 
     //Function for death
-    void Death()
+    public void Death()
     {
-        Destroy(gameObject); //Placeholder
+        if (animator != null)
+        {
+            animator.SetTrigger("Death");
+            Destroy(gameObject, 3.0f);
+        }
+        else
+        {
+            Destroy(gameObject); 
+        }
     }
 }

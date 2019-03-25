@@ -14,12 +14,19 @@ public class Enemy_Chasing : NPCBaseFSM
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent.destination = player.transform.position;
+        if (health.curHealth <= 0)
+        {
+            animator.SetTrigger("Death");
+            agent.Stop();
+            health.Death();
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        agent.Stop();
+        agent.ResetPath();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

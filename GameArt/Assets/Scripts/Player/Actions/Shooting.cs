@@ -24,12 +24,12 @@ public class Shooting : MonoBehaviour {
         if (Input.GetButton("Fire1") && timer <= 0)
         {
             timer = attSpeed;
-            Shoot();
+            //Shoot();
             animator.SetTrigger("RangeAtt");
         }
     }
 
-    void Shoot()
+    public void Shoot()
     {
         if (player.giveDir())
         {
