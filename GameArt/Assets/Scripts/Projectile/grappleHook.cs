@@ -54,7 +54,7 @@ public class grappleHook : MonoBehaviour
         {
             contact = true;
             speed = 0;
-            GameObject.Find("Player(Cube)").GetComponent<PlayerController>().grappleConnection = true;
+            //GameObject.Find("Player(Cube)").GetComponent<PlayerController>().grappleConnection = true;
             //Destroy(gameObject, .5f);
         }
         else if (other.CompareTag("Player"))
