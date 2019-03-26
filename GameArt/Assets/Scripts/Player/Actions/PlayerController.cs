@@ -17,7 +17,16 @@ public class PlayerController : MonoBehaviour {
     public Text winText;
     private int maxJump = 2;
     int currJump;
+<<<<<<< Updated upstream
     private Animator animator;
+=======
+    public bool grappleConnection = false;
+    private float swingSpeed = 5f;
+    private float angleR = 3.927f;
+    private float angleL = 3.927f;
+    private bool resetVelocity = false;
+
+>>>>>>> Stashed changes
 
     // Use this for initialization
     void Start () {
@@ -31,7 +40,21 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
         Debug.Log(isGrounded);
         Movement();
+<<<<<<< Updated upstream
 
+=======
+        if (grappleConnection)
+        {
+            Swing();
+        }
+        else
+        {
+            angleR = 3.927f;
+            angleL = 3.927f;
+            rb.useGravity = true;
+            resetVelocity = false;
+        }
+>>>>>>> Stashed changes
     }
 
     // Use FixedUpdate for physics based function
@@ -118,6 +141,33 @@ public class PlayerController : MonoBehaviour {
         }
 
 
+    }
+
+    void Swing()
+    {
+        if (!resetVelocity)
+        {
+            rb.velocity = Vector3.zero;
+            resetVelocity = true;
+        }
+        GameObject grappleHook = GameObject.Find("grappleHook(Clone)");
+        Vector3 centerPoint = grappleHook.transform.position;
+        float distance = Vector3.Distance(grappleHook.transform.position, transform.position);
+        //angle += swingSpeed * Time.deltaTime;
+        var offset = Vector3.zero;
+        if (grappleHook.GetComponent<grappleHook>().shootRight)
+        {
+            angleR += swingSpeed * Time.deltaTime;
+            offset = new Vector3(Mathf.Cos(angleR), Mathf.Sin(angleR), 0) * distance;
+        }
+        else
+        {
+            angleL += swingSpeed * Time.deltaTime;
+            offset = new Vector3(-Mathf.Cos(angleL), Mathf.Sin(angleL), 0) * distance;
+        }
+        rb.useGravity = false;
+        rb.MovePosition(transform.position + (offset + centerPoint) * Time.deltaTime);
+        //transform.position = centerPoint + offset;
     }
 
     public bool giveDir()

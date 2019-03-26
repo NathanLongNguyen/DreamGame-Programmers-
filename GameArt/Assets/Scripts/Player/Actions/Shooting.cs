@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour {
 
-    public float attSpeed;
-    public Transform shotPos, shotPosR;
+    public Transform shotPos;
     float timer;
-    public GameObject bullet;
+    public GameObject grappleHook;
     private PlayerController player;
     private Animator animator;
 
@@ -21,25 +20,21 @@ public class Shooting : MonoBehaviour {
 	void Update () {
         timer -= Time.deltaTime;
 
-        if (Input.GetButton("Fire1") && timer <= 0)
+        if (Input.GetButton("Fire1"))
         {
+<<<<<<< Updated upstream
             timer = attSpeed;
             //Shoot();
             animator.SetTrigger("RangeAtt");
+=======
+            Shoot();
+>>>>>>> Stashed changes
         }
     }
 
     public void Shoot()
     {
-        if (player.giveDir())
-        {
-            Instantiate(bullet, shotPos.position, shotPos.rotation);
-        }
-        else if (!player.giveDir())
-        {
-            //Debug.Log("shoot left");
-            Instantiate(bullet, shotPosR.position, shotPosR.rotation);
-        }
+        Instantiate(grappleHook, shotPos.position, Quaternion.identity);
     }
 }
 
