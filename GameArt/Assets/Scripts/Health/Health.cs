@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour {
 
     public int maxHealth; 
+    public Image HealthBar;
     public float regenTimer; //set how fast the regen is 
     float timer;
-    public int curHealth, regenRate; //regenRate is the rate at which health regens at
+    public int curHealth, regenRate, holdHP; //regenRate is the rate at which health regens at, holdHP keeps track of current health changes
     private Animator animator;
 
 
@@ -15,13 +17,19 @@ public class Health : MonoBehaviour {
 	void Start () {
         timer = regenTimer;
         curHealth = maxHealth;
+        holdHP = curHealth;
         animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        //Debug.Log(curHealth);
+        if(holdHP != curHealth) { // Checks for current health change and updates the health bar.
+            holdHP = curHealth;
+            HealthBar.fillAmount = (float) holdHP / 100;
+        }
+
+        //Debug.Log(HealthBar.fillAmount);
         if(curHealth < maxHealth && curHealth >0) //if player's health is not at full and still alive, then they're able to regen health
         {
             Regen();
