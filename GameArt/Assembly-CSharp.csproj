@@ -61,13 +61,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Enemy_idle.cs" />
+    <Compile Include="Assets\DoorController.cs" />
     <Compile Include="Assets\Environment\Player\player_controls.cs" />
     <Compile Include="Assets\Environment\Player\player_controls_2.cs" />
     <Compile Include="Assets\Fear_Projectile.cs" />
+    <Compile Include="Assets\hiding.cs" />
     <Compile Include="Assets\KnifeDam.cs" />
     <Compile Include="Assets\Melee.cs" />
     <Compile Include="Assets\Ranged_Sight.cs" />
+    <Compile Include="Assets\Scripts\Audio\Audio.cs" />
     <Compile Include="Assets\Scripts\Breakable\box.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraMove.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Assets\Scripts\Enemy\Action\Enemy_shooting.cs" />
     <Compile Include="Assets\Scripts\Enemy\Action\Enemy_Sight.cs" />
     <Compile Include="Assets\Scripts\Enemy\AI\Enemy_Chasing.cs" />
+    <Compile Include="Assets\Scripts\Enemy\AI\Enemy_idle.cs" />
     <Compile Include="Assets\Scripts\Enemy\AI\Enemy_Patrol.cs" />
     <Compile Include="Assets\Scripts\Enemy\AI\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\Enemy\AI\NPCBaseFSM.cs" />
@@ -103,19 +106,19 @@
     <Compile Include="Assets\Scripts\Projectile\grappleHook.cs" />
     <Compile Include="Assets\Scripts\Trap\pit.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/brand/Desktop/GameDev/DreamGame-Programmers-/GameArt/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/theng/OneDrive/Documents/GitHub/DreamGame-Programmers-/GameArt/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/brand/Desktop/GameDev/DreamGame-Programmers-/GameArt/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/theng/OneDrive/Documents/GitHub/DreamGame-Programmers-/GameArt/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/brand/Desktop/GameDev/DreamGame-Programmers-/GameArt/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/theng/OneDrive/Documents/GitHub/DreamGame-Programmers-/GameArt/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/brand/Desktop/GameDev/DreamGame-Programmers-/GameArt/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/theng/OneDrive/Documents/GitHub/DreamGame-Programmers-/GameArt/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/brand/Desktop/GameDev/DreamGame-Programmers-/GameArt/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/theng/OneDrive/Documents/GitHub/DreamGame-Programmers-/GameArt/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -319,13 +322,13 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/brand/Desktop/GameDev/DreamGame-Programmers-/GameArt/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/theng/OneDrive/Documents/GitHub/DreamGame-Programmers-/GameArt/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/brand/Desktop/GameDev/DreamGame-Programmers-/GameArt/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/theng/OneDrive/Documents/GitHub/DreamGame-Programmers-/GameArt/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/brand/Desktop/GameDev/DreamGame-Programmers-/GameArt/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/theng/OneDrive/Documents/GitHub/DreamGame-Programmers-/GameArt/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

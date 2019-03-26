@@ -40,11 +40,13 @@ public class Melee : MonoBehaviour
 
     void DealDamage(int damage)
     {
+
+        Audio.PlaySound("KnifeMelee");
         Collider[] enemiesToDam = Physics.OverlapSphere(attackPos.position, attackRange, whatisEnemies);
         for (int i =0; i < enemiesToDam.Length; i++)
         {
             enemiesToDam[i].GetComponent<Health>().takeDamage(damage);
-            Debug.Log("stabbed");
+            //Debug.Log("stabbed");
         }
     }
 

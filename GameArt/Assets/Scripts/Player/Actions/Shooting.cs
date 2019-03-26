@@ -31,8 +31,10 @@ public class Shooting : MonoBehaviour {
 
     public void Shoot()
     {
+        Audio.PlaySound("KnifeThrow");
         if (player.giveDir())
         {
+
             Instantiate(bullet, shotPos.position, shotPos.rotation);
         }
         else if (!player.giveDir())

@@ -26,7 +26,10 @@ public class Health : MonoBehaviour {
 
         if(holdHP != curHealth) { // Checks for current health change and updates the health bar.
             holdHP = curHealth;
-            HealthBar.fillAmount = (float) holdHP / 100;
+            if (gameObject.tag == "Player")
+            {
+                HealthBar.fillAmount = (float)holdHP / 100;
+            }
         }
 
         //Debug.Log(HealthBar.fillAmount);
@@ -45,7 +48,16 @@ public class Health : MonoBehaviour {
         curHealth -=  dam;
         if (curHealth < 0)
         {
+            animator.SetTrigger("Death");
             Death();
+        }
+        if(gameObject.tag == "Enemy")
+        {
+            Audio.PlaySound("EnemyHurt");
+        }
+        else if (gameObject.tag == "Player")
+        {
+            Audio.PlaySound("PlayerHurt");
         }
     }
 
@@ -65,8 +77,8 @@ public class Health : MonoBehaviour {
     {
         if (animator != null)
         {
-
-            Destroy(gameObject, 3.0f);
+            animator.SetTrigger("Death");
+            Destroy(gameObject, 1.5f);
         }
         else
         {

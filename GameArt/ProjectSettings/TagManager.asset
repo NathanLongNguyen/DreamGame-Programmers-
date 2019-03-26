@@ -11,6 +11,7 @@ TagManager:
   - Edge
   - ground
   - Kinfe
+  - Hide
   layers:
   - Default
   - TransparentFX

@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour {
     private int maxJump = 2;
     int currJump;
     private Animator animator;
+    public bool canHide;
+    
 
     // Use this for initialization
     void Start () {
@@ -25,11 +27,12 @@ public class PlayerController : MonoBehaviour {
         animator = GetComponent<Animator>();
         facingRight = true;
         //winText.text = "";
+        canHide = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
         Movement();
 
     }

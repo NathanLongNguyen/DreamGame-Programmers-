@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Audio : MonoBehaviour {
 
-    public static AudioClip PlayerHurt;
+    public static AudioClip PlayerHurt, EnemyHurt, KnifeThrow, KnifeMelee;
 	static AudioSource audioSrc;
 
 	// Use this for initialization
 	void Start () {
 
 		PlayerHurt = Resources.Load<AudioClip> ("PlayerHurt");
-		
+        EnemyHurt = Resources.Load<AudioClip>("EnemyHurt");
+        KnifeThrow = Resources.Load<AudioClip>("knife_throw_low");
+        KnifeMelee = Resources.Load<AudioClip>("melee_hit");
+
         audioSrc = GetComponent<AudioSource> ();
 
 	}
@@ -26,26 +29,16 @@ public class Audio : MonoBehaviour {
 		case "PlayerHurt":
 			audioSrc.PlayOneShot (PlayerHurt);
 			break;
-		case "PlayerMove":
-			audioSrc.PlayOneShot (PlayerMove);
-			break;
-		case "PlayerAttack":
-			audioSrc.PlayOneShot (PlayerAttack);
-                //Debug.Log("Played");
-			break;
-		case "EnemyAttack":
-			audioSrc.PlayOneShot (EnemyAttack);
-			break;
 		case "EnemyHurt":
-			audioSrc.PlayOneShot (enemyHurt);
+			audioSrc.PlayOneShot (EnemyHurt);
 			break;
-		case "PickUp":
-			audioSrc.PlayOneShot (PickUp);
+		case "KnifeThrow":
+			audioSrc.PlayOneShot (KnifeThrow);
 			break;
-		case "lvlUP":
-			audioSrc.PlayOneShot (lvlUP);
+		case "KnifeMelee":
+			audioSrc.PlayOneShot (KnifeMelee);
 			break;
-		case "Jumping":
+		/*case "Jumping":
 			audioSrc.PlayOneShot (Jumping);
 			break;
 		case "Shift":
@@ -62,7 +55,7 @@ public class Audio : MonoBehaviour {
                 break;
         case "rolled":
                 audioSrc.PlayOneShot(rolled);
-                break;
+                break;*/
         }
 }
 

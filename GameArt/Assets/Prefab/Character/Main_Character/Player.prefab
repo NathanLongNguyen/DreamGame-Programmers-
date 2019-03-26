@@ -2015,11 +2015,6 @@ PrefabInstance:
       propertyPath: damage
       value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 2294672222032304314, guid: ce81ca2760e15da4eb822aa144f33176,
-        type: 3}
-      propertyPath: m_Name
-      value: Melee_Knife
-      objectReference: {fileID: 0}
     - target: {fileID: 8402257923744416342, guid: ce81ca2760e15da4eb822aa144f33176,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2090,6 +2085,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.5617
       objectReference: {fileID: 0}
+    - target: {fileID: 2294672222032304314, guid: ce81ca2760e15da4eb822aa144f33176,
+        type: 3}
+      propertyPath: m_Name
+      value: Melee_Knife
+      objectReference: {fileID: 0}
     - target: {fileID: 2187035155246998669, guid: ce81ca2760e15da4eb822aa144f33176,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -2140,7 +2140,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 5.313
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 127413462418513024, guid: ce81ca2760e15da4eb822aa144f33176, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ce81ca2760e15da4eb822aa144f33176, type: 3}
 --- !u!4 &4341761418785408261 stripped
 Transform:

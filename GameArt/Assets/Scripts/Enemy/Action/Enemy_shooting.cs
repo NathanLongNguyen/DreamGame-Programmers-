@@ -36,13 +36,14 @@ public class Enemy_shooting : MonoBehaviour {
 
             if (FR.facingRight)
             {
+                Debug.Log("shoot right");
                 Instantiate(bulletPre, shotPos.position, shotPos.rotation);
                 timer = fireRate;
                 canShoot = false;
             }
             else if (!FR.facingRight)
             {
-                //Debug.Log("shoot left");
+                Debug.Log("shoot left");
                 Instantiate(bulletPre, shotPosL.position, shotPosL.rotation);
                 timer = fireRate;
                 canShoot = false;

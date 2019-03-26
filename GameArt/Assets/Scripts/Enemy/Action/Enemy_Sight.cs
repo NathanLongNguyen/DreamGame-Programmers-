@@ -39,7 +39,7 @@ public class Enemy_Sight : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             animator.SetBool("PlayerDetected", true);
-            Debug.Log("Spotted");
+            //Debug.Log("Spotted");
             sighted = true;
             timer = sightThershold;
         }

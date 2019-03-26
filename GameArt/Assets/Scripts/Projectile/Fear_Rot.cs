@@ -12,12 +12,14 @@ public class Fear_Rot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        facingRight = true;
         timer = flipTimer;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(facingRight);
         timer -= Time.deltaTime;
         if(timer <= 0)
         {
@@ -28,7 +30,10 @@ public class Fear_Rot : MonoBehaviour
 
     void flip()
     {
-        facingRight = !facingRight; //switch true to false or false to true
+        if (facingRight)
+            facingRight = false;
+        else if (!facingRight)
+            facingRight = true;
         Quaternion rot = transform.localRotation; //grabbing the z value of the character
         rot.y *= -1; //flip the object
         transform.localRotation = rot; //update the z of the character's scaling
