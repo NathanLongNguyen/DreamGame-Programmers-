@@ -5,15 +5,16 @@ using UnityEngine;
 public class Enemy_shooting : MonoBehaviour {
 
 
-    public Transform shotPos;
+    public Transform shotPos, shotPosL;
     public GameObject bulletPre;
     public float fireRate;
     float timer;
     bool canShoot;
+    private Fear_Rot FR;
 
 	// Use this for initialization
 	void Start () {
-        
+        FR = GetComponent<Fear_Rot>();
         timer = 0;
 	}
 	
@@ -31,9 +32,21 @@ public class Enemy_shooting : MonoBehaviour {
     {
         if (canShoot)
         {
-            Instantiate(bulletPre, shotPos.position, shotPos.rotation);
-            timer = fireRate;
-            canShoot = false;
+
+
+            if (FR.facingRight)
+            {
+                Instantiate(bulletPre, shotPos.position, shotPos.rotation);
+                timer = fireRate;
+                canShoot = false;
+            }
+            else if (!FR.facingRight)
+            {
+                //Debug.Log("shoot left");
+                Instantiate(bulletPre, shotPosL.position, shotPosL.rotation);
+                timer = fireRate;
+                canShoot = false;
+            }
         }
     }
 }

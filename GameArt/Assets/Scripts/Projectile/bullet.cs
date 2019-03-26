@@ -8,6 +8,8 @@ public class bullet : MonoBehaviour {
     public float speed;
     public Rigidbody rb;
     private PlayerController player;
+    private Health E_Health;
+    public int damage;
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +31,7 @@ public class bullet : MonoBehaviour {
     {
         Vector3 pos = transform.position;
 
-        Vector3 velocity = new Vector3(speed * Time.deltaTime, 0, 0);
+        Vector3 velocity = new Vector3(0, 0, speed * Time.deltaTime);
         pos += transform.rotation * velocity;
 
         transform.position = pos;
@@ -38,8 +40,13 @@ public class bullet : MonoBehaviour {
     //Destroy on touch for now
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("Ground") || other.CompareTag("Player"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Ground"))
         {
+            if (other.CompareTag("Enemy"))
+            {
+                E_Health = other.GetComponent<Health>();
+                E_Health.takeDamage(damage);
+            }
             Destroy(gameObject);
         }
     }

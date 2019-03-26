@@ -13,7 +13,12 @@ ModelImporter:
     2300000: ThrowingKnife
     3300000: ThrowingKnife
     4300000: ThrowingKnife
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: initialShadingGroup
+    second: {fileID: 2100000, guid: 68c26e6b0814b444cb89aee6c9a5d03e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

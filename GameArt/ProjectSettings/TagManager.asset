@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Edge
   - ground
+  - Kinfe
   layers:
   - Default
   - TransparentFX
@@ -22,10 +23,10 @@ TagManager:
   - PostProcessing
   - Ground
   - Box
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Boundry
+  - Pushingable
   - 
   - 
   - 
@@ -46,4 +47,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Back
+    uniqueID: 3941358989
     locked: 0
