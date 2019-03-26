@@ -426,9 +426,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 75
+  HealthBar: {fileID: 0}
   regenTimer: 0
   curHealth: 0
   regenRate: 0
+  holdHP: 0
 --- !u!114 &583288719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1ee2333e0d4a6478d9275911573bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1120865262, guid: a1c9456147b97a548977aa50070fe57b, type: 3}
 --- !u!195 &583288723
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1663,6 +1665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sightThershold: 2
+  timer: 0
 --- !u!1 &8539400137870728241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1721,3 +1724,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sightThershold: 4
+  timer: 0

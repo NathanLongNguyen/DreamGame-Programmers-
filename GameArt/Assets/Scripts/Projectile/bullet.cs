@@ -47,6 +47,7 @@ public class bullet : MonoBehaviour {
                 E_Health = other.GetComponent<Health>();
                 E_Health.takeDamage(damage);
             }
+            Audio.PlaySound("Mat_hit");
             Destroy(gameObject);
         }
     }

@@ -7,6 +7,7 @@ public class box : MonoBehaviour {
     int boxHealth = 3;
     string status = "idle";
     Renderer rend;
+    public GameObject drop;
 
     // Use this for initialization
     void Start () {
@@ -30,6 +31,7 @@ public class box : MonoBehaviour {
                 }
                 else //if box health is <= 0, destroy box
                 {
+                    Instantiate(drop, transform.position,transform.rotation);
                     Destroy(gameObject);
                 }
                 status = "idle"; //reset box status
@@ -46,6 +48,7 @@ public class box : MonoBehaviour {
     {
         if (other.CompareTag("Bullet") || other.CompareTag("Knife")) //if box is damaged, set status to damaged
         {
+            Audio.PlaySound("Mat_hit");
             status = "damaged";
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Audio : MonoBehaviour {
 
-    public static AudioClip PlayerHurt, EnemyHurt, KnifeThrow, KnifeMelee;
+    public static AudioClip PlayerHurt, EnemyHurt, KnifeThrow, KnifeMelee, Mat_hit;
 	static AudioSource audioSrc;
 
 	// Use this for initialization
@@ -14,6 +14,7 @@ public class Audio : MonoBehaviour {
         EnemyHurt = Resources.Load<AudioClip>("EnemyHurt");
         KnifeThrow = Resources.Load<AudioClip>("knife_throw_low");
         KnifeMelee = Resources.Load<AudioClip>("melee_hit");
+        Mat_hit = Resources.Load<AudioClip>("hit_material");
 
         audioSrc = GetComponent<AudioSource> ();
 
@@ -38,10 +39,10 @@ public class Audio : MonoBehaviour {
 		case "KnifeMelee":
 			audioSrc.PlayOneShot (KnifeMelee);
 			break;
-		/*case "Jumping":
-			audioSrc.PlayOneShot (Jumping);
+		case "Mat_hit":
+			audioSrc.PlayOneShot (Mat_hit);
 			break;
-		case "Shift":
+		/*case "Shift":
 			audioSrc.PlayOneShot (Shift);
 			break;
         case "Flame":
