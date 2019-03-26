@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour {
     //function for jumping 
     void Jump()
     {
-        if(Input.GetButtonDown("Jump")  && (isGrounded || maxJump > currJump))
+        if(Input.GetButtonDown("Jump")  && isGrounded)
         {
             isGrounded = false;
             rb.AddForce(Vector3.up *jumpHeight, 0);

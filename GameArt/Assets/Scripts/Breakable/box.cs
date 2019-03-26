@@ -44,7 +44,7 @@ public class box : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet")) //if box is damaged, set status to damaged
+        if (other.CompareTag("Bullet") || other.CompareTag("Knife")) //if box is damaged, set status to damaged
         {
             status = "damaged";
         }

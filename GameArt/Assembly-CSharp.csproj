@@ -65,6 +65,8 @@
     <Compile Include="Assets\Environment\Player\player_controls.cs" />
     <Compile Include="Assets\Environment\Player\player_controls_2.cs" />
     <Compile Include="Assets\Fear_Projectile.cs" />
+    <Compile Include="Assets\KnifeDam.cs" />
+    <Compile Include="Assets\Melee.cs" />
     <Compile Include="Assets\Ranged_Sight.cs" />
     <Compile Include="Assets\Scripts\Breakable\box.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
