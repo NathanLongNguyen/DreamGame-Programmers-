@@ -11,6 +11,7 @@ public class grappleHook : MonoBehaviour
     private Vector3 velocity;
     public Rigidbody rb;
     private PlayerController player;
+    private bool setOrientation = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,7 @@ public class grappleHook : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (GameObject.Find("Player(Cube)").transform.localScale.x > 0) shootRight = true;
+        if (GameObject.Find("Player").transform.eulerAngles.y == 90) shootRight = true;
         else shootRight = false;
     }
 
@@ -54,7 +55,13 @@ public class grappleHook : MonoBehaviour
         {
             contact = true;
             speed = 0;
-            //GameObject.Find("Player(Cube)").GetComponent<PlayerController>().grappleConnection = true;
+            //GameObject.Find("Player").GetComponent<PlayerController>().grappleConnection = true;
+            if (setOrientation == false)
+            {
+                GameObject.Find("Player").GetComponent<ShootGrapple>().originalOrientation = GameObject.Find("Player").transform;
+                setOrientation = true;
+            }
+            GameObject.Find("Player").GetComponent<PlayerController>().grappleConnection = true;
             //Destroy(gameObject, .5f);
         }
         else if (other.CompareTag("Player"))

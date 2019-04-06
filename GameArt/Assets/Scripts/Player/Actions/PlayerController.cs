@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
     public float speed, jumpHeight; //That determine player's max speed
-    Rigidbody rb; //Refer to the player's rigidbody
+    public Rigidbody rb; //Refer to the player's rigidbody
     public bool snappy; //Choose if we want a snappy vs fluid type movement (testing purposes)
     bool facingRight; //See if player is facing right
     bool isGrounded = false; //Check to is grounded
@@ -19,7 +19,13 @@ public class PlayerController : MonoBehaviour {
     int currJump;
     private Animator animator;
     public bool canHide;
-    
+
+    public bool grappleConnection = false;
+    private float swingSpeed = 4f;
+    public float angleR = 3.927f;
+    public float angleL = 3.927f;
+    private bool resetVelocity = false;
+
 
     // Use this for initialization
     void Start () {
@@ -33,7 +39,18 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Debug.Log(isGrounded);
-        Movement();
+        if (grappleConnection)
+        {
+            Swing();
+        }
+        else
+        {
+            Movement();
+            angleR = 3.927f;
+            angleL = 3.927f;
+            rb.useGravity = true;
+            resetVelocity = false;
+        }
 
     }
 
@@ -133,6 +150,68 @@ public class PlayerController : MonoBehaviour {
         {
             return false;
         }
+    }
+
+    void Swing()
+    {
+        GameObject grappleHook = GameObject.Find("grappleHook(Clone)");
+        Vector3 centerPoint = grappleHook.transform.position;
+        float distance = Vector3.Distance(grappleHook.transform.position, transform.position);
+        //angle += swingSpeed * Time.deltaTime;
+        var offset = Vector3.zero;
+        if (grappleHook.GetComponent<grappleHook>().shootRight)
+        {
+            //transform.eulerAngles = new Vector3(0, 90, 0);
+            angleR += swingSpeed * (1.1f - (Mathf.Abs((angleR - 4.7f) / (4.7f - 3.5f)))) * Time.deltaTime;
+            //angleR += swingSpeed * Time.deltaTime;
+            offset = new Vector3(Mathf.Cos(angleR), Mathf.Sin(angleR), 0) * distance;
+            //if (angleR > 4.7) Debug.Break();
+            //transform.eulerAngles = new Vector3(0,90,angleR*(180/Mathf.PI));
+            transform.LookAt(grappleHook.transform);
+            //transform.rotation *= Quaternion.Euler(90, 0, 0);
+            if (transform.position.x - grappleHook.transform.position.x < 0) transform.localRotation *= Quaternion.Euler(90, 0, 0);
+            else transform.localRotation *= Quaternion.Euler(-90, -90, -90);
+            GetComponent<ShootGrapple>().forceR = offset * angleR;
+            if (angleR > 5.9 && transform.position.x - grappleHook.transform.position.x > 0)
+            {
+                //transform.eulerAngles = new Vector3(0, -90, 0);
+                grappleHook.GetComponent<grappleHook>().shootRight = false;
+                angleL = 3.5f;
+                //Flip();
+                transform.localRotation *= Quaternion.Euler(1, -1, 1);
+                facingRight = !facingRight;
+            }
+        }
+        else
+        {
+            //transform.eulerAngles = new Vector3(0, -90, 0);
+            angleL += swingSpeed * (1.1f - (Mathf.Abs((angleL - 4.7f) / (4.7f - 3.5f)))) * Time.deltaTime;
+            //angleL += swingSpeed * Time.deltaTime;
+            offset = new Vector3(-Mathf.Cos(angleL), Mathf.Sin(angleL), 0) * distance;
+            //transform.eulerAngles = new Vector3(0,90,-angleL * (180 / Mathf.PI));
+            //Debug.Log(angleL);
+            transform.LookAt(grappleHook.transform);
+            //transform.rotation *= Quaternion.Euler(90, 0, 0);
+            if (transform.position.x - grappleHook.transform.position.x > 0) transform.localRotation *= Quaternion.Euler(90, 0, 0);
+            else transform.localRotation *= Quaternion.Euler(-90, -90, -90);
+            GetComponent<ShootGrapple>().forceL = offset * angleL;
+            if (angleL > 5.9 && transform.position.x - grappleHook.transform.position.x < 0)
+            {
+                //transform.eulerAngles = new Vector3(0, 90, 0);
+                grappleHook.GetComponent<grappleHook>().shootRight = true;
+                angleR = 3.5f;
+                //Flip();
+                transform.localRotation *= Quaternion.Euler(1, -1, 1);
+                facingRight = !facingRight;
+            }
+        }
+        rb.useGravity = false;
+        //Debug.Log(centerPoint - transform.position);
+        //rb.MovePosition(transform.position + (offset + centerPoint) * Time.deltaTime);
+        rb.MovePosition(centerPoint + offset);
+        //transform.position = centerPoint + offset;
+        //rb.AddForce((centerPoint - transform.position) * swingSpeed);
+        //rb.AddForce(centerPoint + offset);
     }
 
     void OnTriggerEnter(Collider other)

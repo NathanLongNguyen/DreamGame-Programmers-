@@ -12,6 +12,7 @@ TagManager:
   - ground
   - Kinfe
   - Hide
+  - Grapple Surface
   layers:
   - Default
   - TransparentFX

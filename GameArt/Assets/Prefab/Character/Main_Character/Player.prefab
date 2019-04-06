@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 3091566286913769440}
   - component: {fileID: 3883890634285061163}
   - component: {fileID: 4692850727894546599}
+  - component: {fileID: 156831959440109344}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -139,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   jumpHeight: 320
+  rb: {fileID: 0}
   snappy: 1
   whatIsGround:
     serializedVersion: 2
@@ -146,6 +148,9 @@ MonoBehaviour:
   groundCheckObj: {fileID: 335567277}
   winText: {fileID: 0}
   canHide: 0
+  grappleConnection: 0
+  angleR: 3.927
+  angleL: 3.927
 --- !u!114 &3091566286913769440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +202,23 @@ MonoBehaviour:
     m_Bits: 4096
   attackPos: {fileID: 6491365391193612294}
   attackRange: 0.75
+--- !u!114 &156831959440109344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120865262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238754c5e450e2344b192f9511d56576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotPos: {fileID: 0}
+  grappleHook: {fileID: 0}
+  originalOrientation: {fileID: 0}
+  forceL: {x: 0, y: 0, z: 0}
+  forceR: {x: 0, y: 0, z: 0}
 --- !u!1 &166654045190857316
 GameObject:
   m_ObjectHideFlags: 0
