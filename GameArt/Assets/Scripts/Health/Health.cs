@@ -10,13 +10,16 @@ public class Health : MonoBehaviour {
     public float regenTimer; //set how fast the regen is 
     float timer;
     public int curHealth, regenRate, holdHP; //regenRate is the rate at which health regens at, holdHP keeps track of current health changes
+
     private Animator animator;
     private Enemy_Sight sight;
-    
+   
 
 
 	// Use this for initialization
 	void Start () {
+
+        
         timer = regenTimer;
         curHealth = maxHealth;
         holdHP = curHealth;
@@ -92,5 +95,11 @@ public class Health : MonoBehaviour {
         {
             Destroy(gameObject); 
         }
+
+        if (gameObject.tag == "Enemy") {
+            sight.timer = 0;
+        }
+
+        gameObject.GetComponent<BoxCollider>().isTrigger = true;
     }
 }

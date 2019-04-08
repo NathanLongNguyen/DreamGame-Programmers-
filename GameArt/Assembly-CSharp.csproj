@@ -124,8 +124,10 @@
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\hiding.cs" />
     <Compile Include="Assets\KnifeDam.cs" />
+    <Compile Include="Assets\Light_trap.cs" />
     <Compile Include="Assets\mainMenu.cs" />
     <Compile Include="Assets\Melee.cs" />
+    <Compile Include="Assets\Player_Detected.cs" />
     <Compile Include="Assets\Ranged_Sight.cs" />
     <Compile Include="Assets\Rotating_Room.cs" />
     <Compile Include="Assets\Scripts\Audio\Audio.cs" />
@@ -165,6 +167,7 @@
     <Compile Include="Assets\Scripts\Projectile\Fear_Rot.cs" />
     <Compile Include="Assets\Scripts\Projectile\grappleHook.cs" />
     <Compile Include="Assets\Scripts\Trap\pit.cs" />
+    <Compile Include="Assets\trap_dam.cs" />
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Doge/Documents/GitHub/DreamGame-Programmers-/GameArt/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

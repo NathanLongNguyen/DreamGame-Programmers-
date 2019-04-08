@@ -12,14 +12,17 @@ public class Enemy_Melee : MonoBehaviour
     NavMeshAgent agent;
 
     public float AttackCD;
-    
 
+    private Enemy_Sight sight;
     private Health pHealth;
+
+    private GameObject NPC;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        sight = GetComponentInParent<Enemy_Sight>();
         agent = GetComponentInParent<NavMeshAgent>();
         pHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
         animator = GetComponentInParent<Animator>();
@@ -59,6 +62,7 @@ public class Enemy_Melee : MonoBehaviour
                 break;
             case "Ground":
                 animator.SetBool("PlayerDetected", false);
+                sight.timer = 0;
                 break;
         }
     }
