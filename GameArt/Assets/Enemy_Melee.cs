@@ -7,10 +7,15 @@ public class Enemy_Melee : MonoBehaviour
 {
     [SerializeField]
     float timer;
+
     Animator animator;
-    public float AttackCD;
-    private Health pHealth;
     NavMeshAgent agent;
+
+    public float AttackCD;
+    
+
+    private Health pHealth;
+
 
     // Start is called before the first frame update
     void Start()
@@ -58,8 +63,5 @@ public class Enemy_Melee : MonoBehaviour
         }
     }
 
-    public void give_Damage(int dam)
-    {
-        pHealth.takeDamage(dam);
-    }
+
 }

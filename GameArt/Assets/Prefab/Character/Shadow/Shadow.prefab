@@ -324,7 +324,6 @@ GameObject:
   - component: {fileID: 5259909724932460446}
   - component: {fileID: 583288719}
   - component: {fileID: 583288723}
-  - component: {fileID: 6779865119970548771}
   m_Layer: 0
   m_Name: Shadow
   m_TagString: Enemy
@@ -340,7 +339,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583288716}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -2.1006, y: -1.1992, z: 3.424494}
+  m_LocalPosition: {x: -2.164, y: -1.1992, z: 3.424494}
   m_LocalScale: {x: 1.6762794, y: 1.6762784, z: 1.6762794}
   m_Children:
   - {fileID: 2140179414}
@@ -348,6 +347,7 @@ Transform:
   - {fileID: 646501651}
   - {fileID: 8029350415109411396}
   - {fileID: 4811579834807684775}
+  - {fileID: 1132762923225609834}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -445,6 +445,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1120865262, guid: a1c9456147b97a548977aa50070fe57b, type: 3}
+  whatisEnemies:
+    serializedVersion: 2
+    m_Bits: 2048
+  attackPos: {fileID: 1132762923225609834}
+  attackRange: 0.75
 --- !u!195 &583288723
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -455,8 +460,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.5
-  m_Acceleration: 10
+  m_Speed: 3
+  m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 999
   m_StoppingDistance: 0
@@ -467,18 +472,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6779865119970548771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583288716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d2f0ac96e294b94d8cda1d1583626d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &596902584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,6 +1613,36 @@ Transform:
   m_Father: {fileID: 583288717}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2118518141137321539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1132762923225609834}
+  m_Layer: 0
+  m_Name: AttPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1132762923225609834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118518141137321539}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.718, z: 0.492}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 583288717}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8123294600819870091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,7 +1701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  AttackCD: 3.5
+  AttackCD: 2.5
 --- !u!1 &8539400137870728241
 GameObject:
   m_ObjectHideFlags: 0

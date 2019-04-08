@@ -29,12 +29,15 @@ public class Enemy_idle : Enemy_Patrol
         {
             timer -= Time.deltaTime;
         }
+
+
         if (sight.sighted)
-        { 
+        {
             agent.Resume();
             Debug.Log("Chasing");
             animator.SetBool("Waiting", false);
         }
+        
     }
 
 

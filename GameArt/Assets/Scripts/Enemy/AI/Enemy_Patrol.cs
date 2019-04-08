@@ -43,18 +43,6 @@ public class Enemy_Patrol : NPCBaseFSM
         GotoNextPoint();
         if (!agent.pathPending && agent.remainingDistance < 0.65f)
         {
-            /*if (timer <= 0)
-            {
-               
-                GotoNextPoint();
-                timer = waitTime;
-            }
-            else
-            {
-                
-                
-                timer -= Time.deltaTime;
-            }*/
             SetNextPoint();
             agent.Stop();
             animator.SetBool("Waiting", true);

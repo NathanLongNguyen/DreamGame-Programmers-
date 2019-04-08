@@ -15,6 +15,7 @@ public class Enemy_Chasing : NPCBaseFSM
     {
         animator.SetBool("Waiting", false);
         Vector3 PlayerPosition = player.transform.position;
+
         if (player.transform.position.x > NPC.transform.position.x)
         {
             PlayerPosition.x -= .30f;
@@ -23,13 +24,17 @@ public class Enemy_Chasing : NPCBaseFSM
         {
             PlayerPosition.x += .30f;
         }
+
         agent.destination = PlayerPosition;
+
         if (health.curHealth <= 0)
         {
             agent.Stop();
             animator.SetTrigger("Death");
             health.Death();
         }
+
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

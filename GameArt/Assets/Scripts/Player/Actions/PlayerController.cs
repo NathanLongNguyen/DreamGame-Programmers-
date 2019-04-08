@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     bool facingRight; //See if player is facing right
     bool isGrounded = false; //Check to is grounded
     Collider[] groundCollision;
+    Collider[] WallCollision;
     float groundC_rad;
     public LayerMask whatIsGround;
     public Transform groundCheckObj;
@@ -123,6 +124,8 @@ public class PlayerController : MonoBehaviour {
             animator.SetBool("isJumping", true);
         }
     }
+
+
 
 
 
