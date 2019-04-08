@@ -10,9 +10,10 @@ TagManager:
   - Enemy
   - Edge
   - ground
-  - Kinfe
   - Hide
   - Grapple Surface
+  - Knife
+  - Kinfe
   layers:
   - Default
   - TransparentFX

@@ -13,11 +13,21 @@ public class Enemy_Chasing : NPCBaseFSM
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        agent.destination = player.transform.position;
+        animator.SetBool("Waiting", false);
+        Vector3 PlayerPosition = player.transform.position;
+        if (player.transform.position.x > NPC.transform.position.x)
+        {
+            PlayerPosition.x -= .30f;
+        }
+        else
+        {
+            PlayerPosition.x += .30f;
+        }
+        agent.destination = PlayerPosition;
         if (health.curHealth <= 0)
         {
-            animator.SetTrigger("Death");
             agent.Stop();
+            animator.SetTrigger("Death");
             health.Death();
         }
     }

@@ -11,6 +11,8 @@ public class Health : MonoBehaviour {
     float timer;
     public int curHealth, regenRate, holdHP; //regenRate is the rate at which health regens at, holdHP keeps track of current health changes
     private Animator animator;
+    private Enemy_Sight sight;
+    
 
 
 	// Use this for initialization
@@ -19,6 +21,10 @@ public class Health : MonoBehaviour {
         curHealth = maxHealth;
         holdHP = curHealth;
         animator = GetComponent<Animator>();
+        if(gameObject.tag == "Enemy")
+        {
+            sight = GetComponentInChildren<Enemy_Sight>();
+        }
 	}
 	
 	// Update is called once per frame
@@ -54,6 +60,8 @@ public class Health : MonoBehaviour {
         if(gameObject.tag == "Enemy")
         {
             Audio.PlaySound("EnemyHurt");
+            sight.sighted = true;
+            sight.timer = sight.sightThershold;
         }
         else if (gameObject.tag == "Player")
         {

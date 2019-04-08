@@ -7,11 +7,11 @@ public class Enemy_Sight : MonoBehaviour {
     private Enemy_shooting shooting;
     private Animator animator;
     [SerializeField]
-    float sightThershold;
-    bool sighted;
+    public float sightThershold;
+    public bool sighted;
 
     [SerializeField]
-    float timer;
+    public float timer;
 
     // Use this for initialization
     void Start () {
@@ -21,14 +21,18 @@ public class Enemy_Sight : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!sighted)
+
+
+        if (sighted)
         {
             if (timer <=  0)
             {
                 animator.SetBool("PlayerDetected", false);
+                sighted = false;
             }
             else
             {
+                animator.SetBool("PlayerDetected", true);
                 timer -= Time.deltaTime;
             }
         }

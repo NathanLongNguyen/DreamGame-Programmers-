@@ -9,8 +9,11 @@ public class NPCBaseFSM :StateMachineBehaviour
     public GameObject player;
     public NavMeshAgent agent;
     public Patrol_Points points;
+    public Enemy_Sight sight;
     public Health health;
     public int destPoint;
+    public float speed;
+    public Rigidbody rb;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -19,6 +22,8 @@ public class NPCBaseFSM :StateMachineBehaviour
         agent = NPC.GetComponent<NavMeshAgent>();
         points = NPC.GetComponent<Patrol_Points>();
         health = NPC.GetComponent <Health>();
+        rb = NPC.GetComponent<Rigidbody>();
+        sight = NPC.GetComponentInChildren<Enemy_Sight>();
         animator.SetTrigger("Start");
         destPoint = 0;
     }

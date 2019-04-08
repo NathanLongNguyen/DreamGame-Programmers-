@@ -111,7 +111,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!65 &1120865263
 BoxCollider:
@@ -124,8 +124,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3116227, y: 0.99748355, z: 0.24560127}
-  m_Center: {x: 0.0077826977, y: 0.49489427, z: 0.007254378}
+  m_Size: {x: 0.3116227, y: 0.99748355, z: 0.16722648}
+  m_Center: {x: 0.007782697, y: 0.49489424, z: -0.008120263}
 --- !u!114 &1120865264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2057,16 +2057,6 @@ PrefabInstance:
       propertyPath: damage
       value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 2294672222032304314, guid: ce81ca2760e15da4eb822aa144f33176,
-        type: 3}
-      propertyPath: m_Name
-      value: Melee_Knife
-      objectReference: {fileID: 0}
-    - target: {fileID: 2294672222032304314, guid: ce81ca2760e15da4eb822aa144f33176,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 8402257923744416342, guid: ce81ca2760e15da4eb822aa144f33176,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2186,6 +2176,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 5.313
+      objectReference: {fileID: 0}
+    - target: {fileID: 2294672222032304314, guid: ce81ca2760e15da4eb822aa144f33176,
+        type: 3}
+      propertyPath: m_Name
+      value: Melee_Knife
+      objectReference: {fileID: 0}
+    - target: {fileID: 2294672222032304314, guid: ce81ca2760e15da4eb822aa144f33176,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6555986597310475326, guid: ce81ca2760e15da4eb822aa144f33176,
         type: 3}
