@@ -21,7 +21,7 @@ public class Cinemach_follow : MonoBehaviour
             tPlayer = GameObject.FindWithTag("Player");
         }
         tFollowTarget = tPlayer.transform;
-        vcam.LookAt = tFollowTarget;
+        //vcam.LookAt = tFollowTarget;
         vcam.Follow = tFollowTarget;
     }
 

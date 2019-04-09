@@ -836,7 +836,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1818640688, guid: 237a801a39a4e7c4d83eb640ffd0efa4, type: 3}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 31
     OrthographicSize: 10
@@ -903,7 +903,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316820443}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50.36, y: 1.9588413, z: -18.013279}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.1614411, y: 1.2697637, z: 0.82960093}
   m_Children: []
   m_Father: {fileID: 0}
@@ -943,7 +943,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 31
+  field of view: 40
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
