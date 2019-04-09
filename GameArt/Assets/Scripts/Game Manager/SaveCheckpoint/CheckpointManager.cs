@@ -12,7 +12,7 @@ public class CheckpointManager : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player(Cube)");
+        player = GameObject.Find("Player");
     }
 
     void Update()
@@ -22,8 +22,10 @@ public class CheckpointManager : MonoBehaviour
             //Destroy(player);
             //Insert code for loading scene first, if scene is different
             var clone = Instantiate(player, checkpointLocation, player.transform.rotation);
-            clone.transform.localScale = new Vector3(1, 1, 1);
-            clone.name = "Player(Cube)";
+            //clone.transform.localScale = new Vector3(1, 1, 1);
+            clone.GetComponent<PlayerController>().facingRight = true;
+            clone.transform.localRotation = Quaternion.Euler(0, 90, 0);
+            clone.name = "Player";
             Destroy(player);
             player = clone;
         }
