@@ -42,6 +42,7 @@ public class InventoryItemBase : InteractableItemBase
     {
         //transform.localPosition = PickPosition;
         //transform.localEulerAngles = PickRotation;
+        Debug.Log("Clicked works");
     }
 
     public virtual void OnPickup()
