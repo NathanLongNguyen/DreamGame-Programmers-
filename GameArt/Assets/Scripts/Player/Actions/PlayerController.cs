@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
     int currJump;
     private Animator animator;
     public bool canHide;
+    public bool crouching;
 
     public bool grappleConnection = false;
     private float swingSpeed = 4f;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         facingRight = true;
+        crouching = false;
         //winText.text = "";
         canHide = false;
 	}
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour {
         //Debug.Log(isGrounded);
         if (grappleConnection)
         {
+            DisableCrouch();
             Swing();
         }
         else
@@ -63,9 +66,11 @@ public class PlayerController : MonoBehaviour {
 
     void Movement()
     {
+
         moveHorizontal();
         groundCheck();
         Jump();
+        Crouch();
 
     }
 
@@ -73,6 +78,12 @@ public class PlayerController : MonoBehaviour {
     void moveHorizontal()
     {
         float move;
+
+        //No crouching and moving
+        if (animator.GetFloat("speed") > 0f)
+        {
+            DisableCrouch();
+        }
         
         //See which type of movement we want
         if (!snappy)
@@ -125,8 +136,22 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    //function for crouching
+    void Crouch()
+    {
+        if (Input.GetButtonDown("Fire3"))
+        {
+            bool crouchStatus = animator.GetBool("Ducking");
+            animator.SetBool("Ducking", !crouchStatus);
+            crouching = !crouchStatus;
+        }
+    }
 
-
+    void DisableCrouch()
+    {
+        animator.SetBool("Ducking", false);
+        crouching = false;
+    }
 
 
     //function for jumping 
@@ -134,6 +159,7 @@ public class PlayerController : MonoBehaviour {
     {
         if(Input.GetButtonDown("Jump")  && isGrounded)
         {
+            DisableCrouch();
             isGrounded = false;
             rb.AddForce(Vector3.up *jumpHeight, 0);
             currJump++;

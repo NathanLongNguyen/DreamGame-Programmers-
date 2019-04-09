@@ -23,7 +23,7 @@ public class CheckpointManager : MonoBehaviour
             //Insert code for loading scene first, if scene is different
             var clone = Instantiate(player, checkpointLocation, player.transform.rotation);
             //clone.transform.localScale = new Vector3(1, 1, 1);
-            clone.GetComponent<PlayerController>().facingRight = true;
+            //clone.GetComponent<PlayerController>().facingRight = true;
             clone.transform.localRotation = Quaternion.Euler(0, 90, 0);
             clone.name = "Player";
             Destroy(player);

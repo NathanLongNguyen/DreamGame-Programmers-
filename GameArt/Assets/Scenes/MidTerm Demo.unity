@@ -1327,6 +1327,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 583288716, guid: a2f0bbefeb8fda54c8f2ce3c93b4def3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 583288717, guid: a2f0bbefeb8fda54c8f2ce3c93b4def3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.37
@@ -4225,6 +4229,10 @@ PrefabInstance:
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 1188929480}
+    - target: {fileID: 1818640696, guid: 237a801a39a4e7c4d83eb640ffd0efa4, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 237a801a39a4e7c4d83eb640ffd0efa4, type: 3}
 --- !u!1 &1386587167

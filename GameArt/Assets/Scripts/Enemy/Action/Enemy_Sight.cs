@@ -6,6 +6,8 @@ public class Enemy_Sight : MonoBehaviour {
 
     private Enemy_shooting shooting;
     private Player_Detected detected;
+    private Animator playerAnimator;
+    private PlayerController playerController;
 
     private Animator animator;
     [SerializeField]
@@ -19,6 +21,8 @@ public class Enemy_Sight : MonoBehaviour {
     // Use this for initialization
     void Start () {
         detected = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Detected>();
+        playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         shooting = GetComponentInParent<Enemy_shooting>();
         animator = GetComponentInParent<Animator>();
 	}
@@ -26,12 +30,17 @@ public class Enemy_Sight : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if ((playerAnimator.GetBool("Ducking") && playerController.canHide))
+        {
+            animator.SetBool("PlayerDetected", false);
+            sighted = false;
+        }
 
         if (sighted)
         {
             if (timer <=  0)
             {
-                
+                Debug.Log("Reset this ");
                 animator.SetBool("PlayerDetected", false);
                 sighted = false;
                 detected.sighted = false;
