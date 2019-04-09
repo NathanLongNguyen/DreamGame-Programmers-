@@ -41,7 +41,7 @@ public class Enemy_Patrol : NPCBaseFSM
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         GotoNextPoint();
-        if (!agent.pathPending && agent.remainingDistance < 0.65f)
+        if (!agent.pathPending && agent.remainingDistance < 0.4f)
         {
             SetNextPoint();
             agent.Stop();

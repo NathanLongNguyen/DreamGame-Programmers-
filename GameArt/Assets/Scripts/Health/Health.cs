@@ -13,6 +13,7 @@ public class Health : MonoBehaviour {
 
     private Animator animator;
     private Enemy_Sight sight;
+    public GameObject E_sight;
    
 
 
@@ -98,6 +99,7 @@ public class Health : MonoBehaviour {
 
         if (gameObject.tag == "Enemy") {
             sight.timer = 0;
+            E_sight.SetActive(false);
         }
 
         gameObject.GetComponent<BoxCollider>().isTrigger = true;

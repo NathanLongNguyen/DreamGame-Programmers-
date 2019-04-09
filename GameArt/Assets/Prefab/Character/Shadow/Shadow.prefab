@@ -396,8 +396,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.23338598, y: 0.9851961, z: 0.17633213}
-  m_Center: {x: 0.010744917, y: 0.49595636, z: -0.00777038}
+  m_Size: {x: 0.687028, y: 0.98519605, z: 0.17633213}
+  m_Center: {x: -0.014191452, y: 0.4959564, z: -0.00777038}
 --- !u!114 &583288718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +431,7 @@ MonoBehaviour:
   curHealth: 0
   regenRate: 0
   holdHP: 0
+  E_sight: {fileID: 8539400137870728241}
 --- !u!114 &583288719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1ee2333e0d4a6478d9275911573bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1120865262, guid: a1c9456147b97a548977aa50070fe57b, type: 3}
+  player: {fileID: 0}
   whatisEnemies:
     serializedVersion: 2
     m_Bits: 2048

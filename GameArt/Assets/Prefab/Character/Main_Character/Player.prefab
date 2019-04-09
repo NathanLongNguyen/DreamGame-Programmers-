@@ -1867,7 +1867,7 @@ GameObject:
   - component: {fileID: 1818640690}
   - component: {fileID: 1818640689}
   m_Layer: 11
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1969,6 +1969,7 @@ MonoBehaviour:
   groundCheckObj: {fileID: 1751260503}
   winText: {fileID: 0}
   canHide: 0
+  crouching: 0
   grappleConnection: 0
   angleR: 3.927
   angleL: 3.927
@@ -2022,7 +2023,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   attackPos: {fileID: 856551355}
-  attackRange: 0.75
+  attackRange: 1.2
 --- !u!114 &1818640690
 MonoBehaviour:
   m_ObjectHideFlags: 0
