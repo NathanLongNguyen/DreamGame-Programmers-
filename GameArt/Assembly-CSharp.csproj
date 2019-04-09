@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\AgentController.cs" />
     <Compile Include="Assets\Cam_Shake.cs" />
+    <Compile Include="Assets\Cinemach_follow.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineClearShot.cs" />
