@@ -157,6 +157,11 @@ public class PlayerController : MonoBehaviour {
     //function for jumping 
     void Jump()
     {
+        if (animator.GetBool("isJumping") && rb.velocity.y < 0)
+        {
+            float fallMultiplierFloat = 2.0f;
+            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplierFloat - 1) * Time.deltaTime;
+        }
         if(Input.GetButtonDown("Jump")  && isGrounded)
         {
             DisableCrouch();

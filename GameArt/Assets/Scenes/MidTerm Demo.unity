@@ -1278,6 +1278,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &362722791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1508974831130604, guid: 52484a0c5d401f64c9de94c152713209,
+    type: 3}
+  m_PrefabInstance: {fileID: 750451005}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &362722796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362722791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a60cdda00447964f9123c9d3993ec26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &390805961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2977,6 +2995,21 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 54349910019075248, guid: 52484a0c5d401f64c9de94c152713209,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 54349910019075248, guid: 52484a0c5d401f64c9de94c152713209,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54349910019075248, guid: 52484a0c5d401f64c9de94c152713209,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 65940180533267884, guid: 52484a0c5d401f64c9de94c152713209,
         type: 3}
       propertyPath: m_Size.x
@@ -3001,6 +3034,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.y
       value: -0.021249907
+      objectReference: {fileID: 0}
+    - target: {fileID: 65940180533267884, guid: 52484a0c5d401f64c9de94c152713209,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52484a0c5d401f64c9de94c152713209, type: 3}
@@ -4912,6 +4950,22 @@ PrefabInstance:
     - target: {fileID: 1818640696, guid: 237a801a39a4e7c4d83eb640ffd0efa4, type: 3}
       propertyPath: m_UseGravity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818640696, guid: 237a801a39a4e7c4d83eb640ffd0efa4, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818640696, guid: 237a801a39a4e7c4d83eb640ffd0efa4, type: 3}
+      propertyPath: m_Mass
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818640694, guid: 237a801a39a4e7c4d83eb640ffd0efa4, type: 3}
+      propertyPath: jumpHeight
+      value: 370
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818640694, guid: 237a801a39a4e7c4d83eb640ffd0efa4, type: 3}
+      propertyPath: speed
+      value: 5.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 237a801a39a4e7c4d83eb640ffd0efa4, type: 3}

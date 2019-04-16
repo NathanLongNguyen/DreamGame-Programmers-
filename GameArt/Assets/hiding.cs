@@ -13,7 +13,6 @@ public class hiding : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         isHiding = true;
         player = GameObject.FindGameObjectWithTag("Player");
         playCon = player.GetComponent<PlayerController>();
