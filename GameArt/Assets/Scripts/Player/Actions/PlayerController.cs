@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour {
     // Detection/Stealth
     public bool canHide;
     public bool crouching;
+    public float ButtonCooler = 0.5f;
+    public int ButtonCount = 0;
+
 
     // Grappling
     public bool grappleConnection = false;
@@ -49,6 +52,7 @@ public class PlayerController : MonoBehaviour {
         {
             DisableCrouch();
             Swing();
+            animator.SetBool("isGrappling", true);
         }
         else
         {
@@ -57,6 +61,7 @@ public class PlayerController : MonoBehaviour {
             angleL = 3.927f;
             rb.useGravity = true;
             resetVelocity = false;
+            animator.SetBool("isGrappling", false);
         }
     }
 
@@ -102,6 +107,30 @@ public class PlayerController : MonoBehaviour {
     void moveHorizontal()
     {
         float move;
+
+        //Dashing
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            if (ButtonCooler > 0 && ButtonCount == 1)
+            {
+                animator.SetBool("isDashing", true);
+            }
+            else
+            {
+                ButtonCooler = 0.5f;
+                ButtonCount += 1;
+            }
+        }
+
+        if (ButtonCooler > 0)
+        {
+            ButtonCooler -= 1 * Time.deltaTime;
+        }
+        else
+        {
+            ButtonCount = 0;
+        }
 
         //No crouching and moving
         if (animator.GetFloat("speed") > 0f)
