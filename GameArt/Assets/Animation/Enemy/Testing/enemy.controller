@@ -121,6 +121,7 @@ MonoBehaviour:
   destPoint: 0
   speed: 0
   rb: {fileID: 0}
+  distance: 0.3
 --- !u!114 &114919803348072906
 MonoBehaviour:
   m_ObjectHideFlags: 1

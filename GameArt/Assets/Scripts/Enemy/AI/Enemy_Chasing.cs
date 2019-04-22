@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_Chasing : NPCBaseFSM
-{ 
+{
+
+    public float distance;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -18,11 +21,11 @@ public class Enemy_Chasing : NPCBaseFSM
 
         if (player.transform.position.x > NPC.transform.position.x)
         {
-            PlayerPosition.x -= .30f;
+            PlayerPosition.x -= distance;
         }
         else
         {
-            PlayerPosition.x += .30f;
+            PlayerPosition.x += distance;
         }
 
         agent.destination = PlayerPosition;
