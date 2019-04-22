@@ -33,7 +33,7 @@ public class Fear_Projectile : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        Vector3 velocity = new Vector3(speed * Time.deltaTime, 0, 0);
+        Vector3 velocity = new Vector3(0, 0, speed * Time.deltaTime);
         pos += transform.rotation * velocity;
 
         transform.position = pos;
