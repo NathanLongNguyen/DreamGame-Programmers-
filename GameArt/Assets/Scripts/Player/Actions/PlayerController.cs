@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour {
     public bool crouching;
     public float ButtonCooler = 0.5f;
     public int ButtonCount = 0;
+    public bool damaged = false;
+    private Renderer[] render;
+    public bool tempInvuln = false;
 
 
     public bool grappleConnection = false;
@@ -36,6 +39,7 @@ public class PlayerController : MonoBehaviour {
     void Start () {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        render = GetComponentsInChildren<Renderer>();
         facingRight = true;
         crouching = false;
         //winText.text = "";
@@ -59,6 +63,10 @@ public class PlayerController : MonoBehaviour {
             rb.useGravity = true;
             resetVelocity = false;
             animator.SetBool("isGrappling", false);
+            if (damaged && !tempInvuln)
+            {
+                StartCoroutine(Flashing());
+            }
         }
 
     }
@@ -275,6 +283,43 @@ public class PlayerController : MonoBehaviour {
         //transform.position = centerPoint + offset;
         //rb.AddForce((centerPoint - transform.position) * swingSpeed);
         //rb.AddForce(centerPoint + offset);
+    }
+
+    IEnumerator Flashing()
+    {
+        //render.material.color = Color.yellow;
+        damaged = true;
+        tempInvuln = true;
+        disableRender();
+        yield return new WaitForSeconds(.1f);
+        enableRender();
+        yield return new WaitForSeconds(.1f);
+        disableRender();
+        yield return new WaitForSeconds(.1f);
+        enableRender();
+        yield return new WaitForSeconds(.1f);
+        disableRender();
+        yield return new WaitForSeconds(.1f);
+        enableRender();
+        damaged = false;
+        tempInvuln = false;
+        StopCoroutine(Flashing());
+    }
+
+    void disableRender()
+    {
+        foreach (var r in render)
+        {
+            r.enabled = false;
+        }
+    }
+
+    void enableRender()
+    {
+        foreach (var r in render)
+        {
+            r.enabled = true;
+        }
     }
 
     void OnTriggerEnter(Collider other)
