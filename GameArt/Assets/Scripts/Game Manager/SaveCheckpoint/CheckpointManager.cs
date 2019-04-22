@@ -7,12 +7,14 @@ public class CheckpointManager : MonoBehaviour
 {
     public bool checkpointSaved = false;
     public Scene checkpointScene;
-    public Vector3 checkpointLocation;
+    public Vector3 setLocation;
+    public Vector3 offset;
     private GameObject player;
 
     void Start()
     {
         player = GameObject.Find("Player");
+        offset = new Vector3(0, player.transform.position.y, 0);
     }
 
     void Update()
@@ -21,7 +23,7 @@ public class CheckpointManager : MonoBehaviour
         {
             //Destroy(player);
             //Insert code for loading scene first, if scene is different
-            var clone = Instantiate(player, checkpointLocation, player.transform.rotation);
+            var clone = Instantiate(player, setLocation, player.transform.rotation);
             //clone.transform.localScale = new Vector3(1, 1, 1);
             //clone.GetComponent<PlayerController>().facingRight = true;
             clone.transform.localRotation = Quaternion.Euler(0, 90, 0);

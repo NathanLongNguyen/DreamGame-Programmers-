@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/EnemyPlayground.unity
+- path: Assets/Scenes/JoeTesting.unity
   isLoaded: 1
   isActive: 1

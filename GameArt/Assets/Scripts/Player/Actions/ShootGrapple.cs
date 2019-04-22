@@ -6,6 +6,7 @@ public class ShootGrapple : MonoBehaviour
 {
     
     public Transform shotPos;
+    private Vector3 offset;
     public GameObject grappleHook;
     public Transform originalOrientation;
     public Vector3 forceL, forceR;
@@ -13,7 +14,7 @@ public class ShootGrapple : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        offset = new Vector3(0f, 1.4f, 0f);
     }
 
     // Update is called once per frame
@@ -46,6 +47,6 @@ public class ShootGrapple : MonoBehaviour
 
     void ShootG()
     {
-        Instantiate(grappleHook, shotPos.position, Quaternion.identity);
+        Instantiate(grappleHook, shotPos.position + offset, Quaternion.identity);
     }
 }
