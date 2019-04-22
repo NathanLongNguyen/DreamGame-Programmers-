@@ -5,31 +5,26 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
-    // Movement and jumping
-    public float speed, jumpHeight;         //That determine player's max speed
-    public Rigidbody rb;                    //Refer to the player's rigidbody
-    public bool snappy;                     //Choose if we want a snappy vs fluid type movement (testing purposes)
-    bool facingRight;                       //See if player is facing right
-    bool isGrounded = false;                //Check to is grounded
+    public float speed, jumpHeight; //That determine player's max speed
+    public Rigidbody rb; //Refer to the player's rigidbody
+    public bool snappy; //Choose if we want a snappy vs fluid type movement (testing purposes)
+    bool facingRight; //See if player is facing right
+    bool isGrounded = false; //Check to is grounded
     Collider[] groundCollision;
-    Collider[] WallCollision;               //Currently not being used
+    Collider[] WallCollision;
     float groundC_rad;
     public LayerMask whatIsGround;
     public Transform groundCheckObj;
-    private int maxJump = 2;                //Currently not being used
-    private int currJump;
-    private int touched = 0;                //Used for boss checking boss room rotations
-
+    public Text winText;
+    private int maxJump = 2;
+    int currJump;
     private Animator animator;
-
-    // Detection/Stealth
     public bool canHide;
     public bool crouching;
     public float ButtonCooler = 0.5f;
     public int ButtonCount = 0;
 
 
-    // Grappling
     public bool grappleConnection = false;
     private float swingSpeed = 4f;
     public float angleR = 3.927f;
@@ -43,11 +38,13 @@ public class PlayerController : MonoBehaviour {
         animator = GetComponent<Animator>();
         facingRight = true;
         crouching = false;
+        //winText.text = "";
         canHide = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        //Debug.Log(isGrounded);
         if (grappleConnection)
         {
             DisableCrouch();
@@ -63,6 +60,7 @@ public class PlayerController : MonoBehaviour {
             resetVelocity = false;
             animator.SetBool("isGrappling", false);
         }
+
     }
 
     // Use FixedUpdate for physics based function
@@ -71,39 +69,17 @@ public class PlayerController : MonoBehaviour {
         
     }
 
-    #region Movement functions
-    // Basic movement function, checks crounching and jumping status
     void Movement()
     {
+
         moveHorizontal();
         groundCheck();
         Jump();
         Crouch();
+
     }
 
-    void BossMovement()
-    {
-        BossMovementHelper();
-        groundCheck();
-        Jump();
-        Crouch();
-    }
-
-    void BossMovementHelper()
-    {
-        if(touched == 0)
-        {
-            Vector3 bossMove = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-            transform.position += bossMove * speed * Time.deltaTime;
-        }
-        else
-        {
-            Vector3 bossMove = new Vector3(0, 0, Input.GetAxis("Horizontal"));
-            transform.position += bossMove * speed * Time.deltaTime;
-        }
-    }
-
-    // Function for moving horizontally
+    //fucntion for moving horizontally
     void moveHorizontal()
     {
         float move;
@@ -163,18 +139,19 @@ public class PlayerController : MonoBehaviour {
         }
     }
     
-    // Function for flipping the player
+    //function for flipping
     void Flip()
     {
-        facingRight = !facingRight;                 //switch true to false or false to true
-        Quaternion rot = transform.localRotation;   //grabbing local rotation of player
-        rot.y *= -1;                                //flip the object (y axis)
-        transform.localRotation = rot;              //update the rotation
+        facingRight = !facingRight; //switch true to false or false to true
+        Quaternion rot = transform.localRotation; //grabbing the z value of the character
+        rot.y *= -1; //flip the object
+        transform.localRotation = rot; //update the z of the character's scaling
     }
 
-    // Function for checking if the player is grounded
+    //function for checking if the player is grounded
     void groundCheck()
     {
+        
         groundCollision = Physics.OverlapSphere(groundCheckObj.position, groundC_rad, whatIsGround);
         if(groundCollision.Length> 0)
         {
@@ -188,7 +165,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    // Function for crouching
+    //function for crouching
     void Crouch()
     {
         if (Input.GetButtonDown("Fire3"))
@@ -206,7 +183,7 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    // Function for jumping 
+    //function for jumping 
     void Jump()
     {
         if (animator.GetBool("isJumping") && rb.velocity.y < 0)
@@ -222,6 +199,8 @@ public class PlayerController : MonoBehaviour {
             currJump++;
             
         }
+
+
     }
 
     public bool giveDir()
@@ -235,8 +214,7 @@ public class PlayerController : MonoBehaviour {
             return false;
         }
     }
-    #endregion
-    #region Grappling
+
     void Swing()
     {
         GameObject grappleHook = GameObject.Find("grappleHook(Clone)");
@@ -298,7 +276,6 @@ public class PlayerController : MonoBehaviour {
         //rb.AddForce((centerPoint - transform.position) * swingSpeed);
         //rb.AddForce(centerPoint + offset);
     }
-    #endregion
 
     void OnTriggerEnter(Collider other)
     {
@@ -309,6 +286,11 @@ public class PlayerController : MonoBehaviour {
             //Can alternatively set to inactive instead:
             //other.gameObject.SetActive(false);
         }
+
+        /*if (other.gameObject.CompareTag("EndTrigger"))
+        {
+            winText.text = "Level end!";
+        }*/
     }
 
 }
