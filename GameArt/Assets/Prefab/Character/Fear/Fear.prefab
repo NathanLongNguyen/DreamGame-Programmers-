@@ -826,6 +826,36 @@ Transform:
   m_Father: {fileID: 697864635}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -1.4999961, y: -0.0011946823, z: 0.000015633414}
+--- !u!1 &1267221585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1267221586}
+  m_Layer: 12
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1267221586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267221585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1673060332}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1337093774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,6 +1174,7 @@ Transform:
   - {fileID: 778614734}
   - {fileID: 462662875}
   - {fileID: 5005665129109494144}
+  - {fileID: 1267221586}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -1440,7 +1471,7 @@ GameObject:
   m_Layer: 12
   m_Name: Spawn
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1451,13 +1482,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3122918696107889028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.774}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0, z: 0.754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1673060332}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &7943049726118593143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1472,7 +1503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn1: {fileID: 5005665129109494144}
   spawn2: {fileID: 5005665129109494144}
-  DM: {fileID: 3943813766940114910, guid: 9c6fd3e553b73044aab27c154d8c9b83, type: 3}
+  DM: {fileID: 0}
   Shadows: {fileID: 1752800777949146513, guid: 1ed751fb8b6cea040b57da8ef9c17772, type: 3}
-  spawnRate: 0
+  spawnRate: 5
   timer: 0
