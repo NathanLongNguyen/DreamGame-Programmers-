@@ -8,6 +8,7 @@ public class Enemy_Sight : MonoBehaviour {
     private Player_Detected detected;
     private Animator playerAnimator;
     private PlayerController playerController;
+    public DetectionManager DM;
 
     private Animator animator;
     [SerializeField]
@@ -20,6 +21,7 @@ public class Enemy_Sight : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        //DM = GameObject.FindGameObjectWithTag("Player").GetComponent<DetectionManager>();
         detected = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Detected>();
         playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -38,12 +40,13 @@ public class Enemy_Sight : MonoBehaviour {
 
         if (sighted)
         {
-            if (timer <=  0)
+            if (timer <= 0)
             {
-                Debug.Log("Reset this ");
+                //Debug.Log("Reset this ");
                 animator.SetBool("PlayerDetected", false);
                 sighted = false;
                 detected.sighted = false;
+                DM.isHidden = true;
             }
             else
             {
@@ -53,7 +56,16 @@ public class Enemy_Sight : MonoBehaviour {
             }
         }
         else
+            timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            Debug.Log("Reset this ");
+            animator.SetBool("PlayerDetected", false);
+            sighted = false;
             detected.sighted = false;
+            DM.isHidden = true;
+        }
             
 
     }
@@ -66,6 +78,7 @@ public class Enemy_Sight : MonoBehaviour {
             //Debug.Log("Spotted");
             sighted = true;
             timer = sightThershold;
+            DM.isHidden = false;
         }
     }
 
@@ -74,7 +87,7 @@ public class Enemy_Sight : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
 
-            sighted = false;
+            //sighted = false;
 
         }
     }

@@ -22,7 +22,7 @@ public class Enemy_idle : Enemy_Patrol
         if (timer <= 0)
         {
             agent.Resume();
-            Debug.Log("To Patrol");
+            //Debug.Log("To Patrol");
             animator.SetBool("Waiting", false);       
         }
         else
@@ -34,7 +34,7 @@ public class Enemy_idle : Enemy_Patrol
         if (sight.sighted)
         {
             agent.Resume();
-            Debug.Log("Chasing");
+            //Debug.Log("Chasing");
             animator.SetBool("Waiting", false);
         }
         
