@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour {
     public float angleL = 3.927f;
     private bool resetVelocity = false;
 
+    //Used for detecting left/right dash
+    private string lastHitKey; 
+
 
     // Use this for initialization
     void Start () {
@@ -44,6 +47,7 @@ public class PlayerController : MonoBehaviour {
         crouching = false;
         //winText.text = "";
         canHide = false;
+        lastHitKey = "";
 	}
 	
 	// Update is called once per frame
@@ -91,12 +95,14 @@ public class PlayerController : MonoBehaviour {
     void moveHorizontal()
     {
         float move;
+        string keyPressed = Input.inputString;
 
         //Dashing
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
         {
-            if (ButtonCooler > 0 && ButtonCount == 1)
+
+            if (ButtonCooler > 0 && ButtonCount == 1 && lastHitKey == keyPressed)
             {
                 animator.SetBool("isDashing", true);
             }
@@ -105,6 +111,9 @@ public class PlayerController : MonoBehaviour {
                 ButtonCooler = 0.5f;
                 ButtonCount += 1;
             }
+
+            lastHitKey = keyPressed;
+
         }
 
         if (ButtonCooler > 0)
@@ -188,6 +197,11 @@ public class PlayerController : MonoBehaviour {
     {
         animator.SetBool("Ducking", false);
         crouching = false;
+    }
+
+    void EndDash()
+    {
+        animator.SetBool("isDashing", false);
     }
 
 
