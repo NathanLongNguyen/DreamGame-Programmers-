@@ -1866,6 +1866,7 @@ GameObject:
   - component: {fileID: 1818640691}
   - component: {fileID: 1818640690}
   - component: {fileID: 1818640689}
+  - component: {fileID: 6827492006899166484}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -1972,6 +1973,8 @@ MonoBehaviour:
   crouching: 0
   ButtonCooler: 0.5
   ButtonCount: 0
+  damaged: 0
+  tempInvuln: 0
   grappleConnection: 0
   angleR: 3.927
   angleL: 3.927
@@ -2059,6 +2062,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ex_Point: {fileID: 111297181}
   sighted: 1
+--- !u!114 &6827492006899166484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818640687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f277d73198d71d24e9375d756d254ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dustCloud: {fileID: 0}
 --- !u!1 &1829765524
 GameObject:
   m_ObjectHideFlags: 0

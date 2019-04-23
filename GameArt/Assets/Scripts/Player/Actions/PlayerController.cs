@@ -5,34 +5,93 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
-    public float speed, jumpHeight; //That determine player's max speed
-    public Rigidbody rb; //Refer to the player's rigidbody
-    public bool snappy; //Choose if we want a snappy vs fluid type movement (testing purposes)
-    bool facingRight; //See if player is facing right
-    bool isGrounded = false; //Check to is grounded
+    // Movement and jumping
+    public float speed, jumpHeight;         //That determine player's max speed
+    public Rigidbody rb;                    //Refer to the player's rigidbody
+    public bool snappy;                     //Choose if we want a snappy vs fluid type movement (testing purposes)
+    bool facingRight;                       //See if player is facing right
+    bool isGrounded = false;                //Check to is grounded
     Collider[] groundCollision;
-    Collider[] WallCollision;
+    Collider[] WallCollision;               //Currently not being used
     float groundC_rad;
     public LayerMask whatIsGround;
     public Transform groundCheckObj;
-    public Text winText;
-    private int maxJump = 2;
-    int currJump;
+    private int maxJump = 2;                //Currently not being used
+    private int currJump;
+
     private Animator animator;
+
+    // Hiding/Movement
     public bool canHide;
     public bool crouching;
     public float ButtonCooler = 0.5f;
     public int ButtonCount = 0;
+
+    // Damage Taken
     public bool damaged = false;
     private Renderer[] render;
     public bool tempInvuln = false;
 
-
+    // Grapple System
     public bool grappleConnection = false;
     private float swingSpeed = 4f;
     public float angleR = 3.927f;
     public float angleL = 3.927f;
     private bool resetVelocity = false;
+
+    // Boss room variables
+    public GameObject camera_boss;
+    private int touched = 0;
+    private bool isColliding = false;
+    private Vector3 move;
+
+    #region IEnumrator functions
+    //Rotating the camera 90 degrees counter-clockwise as well as the player
+    IEnumerator Rotate(Vector3 byAngles, float inTime, Vector3 playerAngle)
+    {
+        Quaternion fromAngle = camera_boss.transform.rotation;
+        Quaternion playerFromAngle = transform.rotation;
+        Quaternion toAngle = Quaternion.Euler(camera_boss.transform.eulerAngles + byAngles);
+        Quaternion playerToAngle = Quaternion.Euler(camera_boss.transform.eulerAngles + playerAngle);
+        FreezeChar();
+        GameObject.Find("Player").GetComponent<PlayerController>().enabled = false;
+        for (float i = 0f; i < 1f; i += Time.deltaTime / inTime)
+        {
+            camera_boss.transform.rotation = Quaternion.Slerp(fromAngle, toAngle, i);
+            transform.rotation = Quaternion.Slerp(playerFromAngle, playerToAngle, i);
+            yield return null;
+
+        }
+        //Snapping to the correct angle
+        camera_boss.transform.rotation = toAngle;
+        transform.rotation = playerToAngle;
+        UnfreezeChar();
+        GameObject.Find("Player").GetComponent<PlayerController>().enabled = true;
+        isColliding = true;
+        yield return null;
+    }
+
+    IEnumerator Flashing()
+    {
+        //render.material.color = Color.yellow;
+        damaged = true;
+        tempInvuln = true;
+        disableRender();
+        yield return new WaitForSeconds(.1f);
+        enableRender();
+        yield return new WaitForSeconds(.1f);
+        disableRender();
+        yield return new WaitForSeconds(.1f);
+        enableRender();
+        yield return new WaitForSeconds(.1f);
+        disableRender();
+        yield return new WaitForSeconds(.1f);
+        enableRender();
+        damaged = false;
+        tempInvuln = false;
+        StopCoroutine(Flashing());
+    }
+    #endregion
 
 
     // Use this for initialization
@@ -42,13 +101,36 @@ public class PlayerController : MonoBehaviour {
         render = GetComponentsInChildren<Renderer>();
         facingRight = true;
         crouching = false;
-        //winText.text = "";
         canHide = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         //Debug.Log(isGrounded);
+        switch (touched)
+        {
+            case 1:
+                move = new Vector3(0, 0, Input.GetAxisRaw("Horizontal"));
+                transform.position += move * speed * Time.deltaTime;
+                break;
+            case 2:
+                move = new Vector3(-Input.GetAxisRaw("Horizontal"), 0, 0);
+                transform.position += move * speed * Time.deltaTime;
+                break;
+            case 3:
+                move = new Vector3(0, 0, -Input.GetAxisRaw("Horizontal"));
+                transform.position += move * speed * Time.deltaTime;
+                break;
+            case 4:
+                move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
+                transform.position += move * speed * Time.deltaTime;
+                break;
+            default:
+                move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
+                transform.position += move * speed * Time.deltaTime;
+                break;
+        }
+
         if (grappleConnection)
         {
             DisableCrouch();
@@ -68,7 +150,6 @@ public class PlayerController : MonoBehaviour {
                 StartCoroutine(Flashing());
             }
         }
-
     }
 
     // Use FixedUpdate for physics based function
@@ -135,7 +216,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //move by changing the velocity of the rigidbody
-        rb.velocity = new Vector3(move * speed, rb.velocity.y, 0);
+        //rb.velocity = new Vector3(move * speed, rb.velocity.y, 0);
 
         //Check to see if we need to flip the character
         if(move > 0 && !facingRight)
@@ -151,9 +232,10 @@ public class PlayerController : MonoBehaviour {
     void Flip()
     {
         facingRight = !facingRight; //switch true to false or false to true
-        Quaternion rot = transform.localRotation; //grabbing the z value of the character
-        rot.y *= -1; //flip the object
-        transform.localRotation = rot; //update the z of the character's scaling
+        //Quaternion rot = transform.localRotation; //grabbing the z value of the character
+        //rot.y *= -1; //flip the object
+        //transform.localRotation = rot; //update the z of the character's scaling
+        transform.Rotate(Vector3.up * -180);
     }
 
     //function for checking if the player is grounded
@@ -190,7 +272,6 @@ public class PlayerController : MonoBehaviour {
         crouching = false;
     }
 
-
     //function for jumping 
     void Jump()
     {
@@ -221,6 +302,18 @@ public class PlayerController : MonoBehaviour {
         {
             return false;
         }
+    }
+
+    public void FreezeChar()
+    {
+        rb.isKinematic = true;
+        rb.detectCollisions = false;
+    }
+
+    public void UnfreezeChar()
+    {
+        rb.isKinematic = false;
+        rb.detectCollisions = true;
     }
 
     void Swing()
@@ -285,27 +378,6 @@ public class PlayerController : MonoBehaviour {
         //rb.AddForce(centerPoint + offset);
     }
 
-    IEnumerator Flashing()
-    {
-        //render.material.color = Color.yellow;
-        damaged = true;
-        tempInvuln = true;
-        disableRender();
-        yield return new WaitForSeconds(.1f);
-        enableRender();
-        yield return new WaitForSeconds(.1f);
-        disableRender();
-        yield return new WaitForSeconds(.1f);
-        enableRender();
-        yield return new WaitForSeconds(.1f);
-        disableRender();
-        yield return new WaitForSeconds(.1f);
-        enableRender();
-        damaged = false;
-        tempInvuln = false;
-        StopCoroutine(Flashing());
-    }
-
     void disableRender()
     {
         foreach (var r in render)
@@ -324,6 +396,8 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        if (isColliding) return;
+
         if (other.gameObject.CompareTag("Pick Up"))
         {
             //Destroy the gameObject when collide
@@ -332,11 +406,34 @@ public class PlayerController : MonoBehaviour {
             //other.gameObject.SetActive(false);
         }
 
-        /*if (other.gameObject.CompareTag("EndTrigger"))
+        if (other.gameObject.CompareTag("Rotate"))
         {
-            winText.text = "Level end!";
-        }*/
+            switch (other.gameObject.name)
+            {
+                case "TurnPoint_BR":
+                    touched = 1;
+                    break;
+                case "TurnPoint_TR":
+                    touched = 2;
+                    break;
+                case "TurnPoint_TL":
+                    touched = 3;
+                    break;
+                case "TurnPoint_BL":
+                    touched = 4;
+                    break;
+                default:
+                    touched = 0;
+                    break;
+            }
+            StartCoroutine(Rotate(Vector3.down * 90, 0.8f, Vector3.down*0));
+        }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Rotate"))
+            isColliding = false;
+    }
 }
 

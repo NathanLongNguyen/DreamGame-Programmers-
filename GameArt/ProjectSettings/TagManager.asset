@@ -14,6 +14,7 @@ TagManager:
   - Grapple Surface
   - Knife
   - Kinfe
+  - Rotate
   layers:
   - Default
   - TransparentFX
