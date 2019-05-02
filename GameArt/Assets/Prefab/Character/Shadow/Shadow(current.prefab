@@ -598,7 +598,7 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: 999
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
@@ -1181,6 +1181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b251d82a77aabc479684546de939813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DM: {fileID: 0}
   sightThershold: 3.5
   sighted: 0
   timer: 0

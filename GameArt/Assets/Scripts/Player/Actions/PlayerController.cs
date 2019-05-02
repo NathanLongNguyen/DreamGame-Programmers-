@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
     private Animator animator;
     public bool canHide;
     public bool crouching;
-    public float ButtonCooler = 0.5f;
+    public float ButtonCooler = 0.2f;
     public int ButtonCount = 0;
     public bool damaged = false;
     private Renderer[] render;
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour {
             }
             else
             {
-                ButtonCooler = 0.5f;
+                ButtonCooler = 0.2f;
                 ButtonCount += 1;
             }
 

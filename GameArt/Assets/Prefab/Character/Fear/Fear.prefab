@@ -1151,6 +1151,7 @@ GameObject:
   - component: {fileID: 1673060329}
   - component: {fileID: 1673060334}
   - component: {fileID: 1673060335}
+  - component: {fileID: 3828916942530275515}
   m_Layer: 12
   m_Name: Fear
   m_TagString: Enemy
@@ -1256,7 +1257,7 @@ MonoBehaviour:
   player: {fileID: 0}
   whatisEnemies:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   attackPos: {fileID: 0}
   attackRange: 0
 --- !u!114 &1673060328
@@ -1288,7 +1289,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 7.5
+  m_Speed: 8
   m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 999
@@ -1315,7 +1316,25 @@ MonoBehaviour:
   method: 2
   curve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1335,6 +1354,18 @@ MonoBehaviour:
   projectile: {fileID: 1209634790362174, guid: 88b88135a469ee1449aca2144cc7660e, type: 3}
   shootRate: 4
   timer: 0
+--- !u!114 &3828916942530275515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673060325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110e3fc832a024b44a110a53bc9672d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1848571955
 GameObject:
   m_ObjectHideFlags: 0
