@@ -35,7 +35,7 @@ public class Enemy_Patrol : NPCBaseFSM
         // Choose the next point in the array as the destination,
         // cycling to the start if necessary.
         destPoint = (destPoint + 1) % points.pPoints.Length;
-        //Debug.Log("changing points");
+        Debug.Log("changing points");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

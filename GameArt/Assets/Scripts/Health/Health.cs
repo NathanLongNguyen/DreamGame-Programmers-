@@ -14,15 +14,13 @@ public class Health : MonoBehaviour {
     private Animator animator;
     private Enemy_Sight sight;
     public GameObject E_sight;
-    private Rigidbody rb;
-
    
 
 
 	// Use this for initialization
 	void Start () {
 
-        rb = gameObject.GetComponent<Rigidbody>();    
+        
         timer = regenTimer;
         curHealth = maxHealth;
         holdHP = curHealth;
@@ -66,11 +64,8 @@ public class Health : MonoBehaviour {
         if(gameObject.tag == "Enemy")
         {
             Audio.PlaySound("EnemyHurt");
-            if (sight != null)
-            {
-                sight.sighted = true;
-                sight.timer = sight.sightThershold;
-            }
+            sight.sighted = true;
+            sight.timer = sight.sightThershold;
         }
         else if (gameObject.tag == "Player")
         {
@@ -103,14 +98,10 @@ public class Health : MonoBehaviour {
         }
 
         if (gameObject.tag == "Enemy") {
-            if (sight != null)
-            {
-                sight.DM.isHidden = true;
-                sight.timer = 0;
-            }
+            sight.timer = 0;
             E_sight.SetActive(false);
         }
-        rb.useGravity = false;
+
         gameObject.GetComponent<BoxCollider>().isTrigger = true;
     }
 }

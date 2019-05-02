@@ -6,40 +6,39 @@ public class Enemy_Spawner : MonoBehaviour
 {
 
     public Transform spawn1, spawn2;
-    public DetectionManager DM;
-    //public Transform[] waypoints;
+    public Transform[] waypoints;
     public GameObject Shadows;
-    public float spawnRate;
-    [SerializeField]
-    float timer;
+    public bool spawn;
 
+    int odds;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        timer = spawnRate;
+       
+        spawn = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!DM.isHidden)
-        {
-            if(timer <= 0)
+
+        if (spawn)
+        { 
+            odds = Random.Range(0, 100);
+            if(odds > 50)
             {
-                Instantiate(Shadows, spawn1.position, spawn1.rotation);
-                timer = spawnRate;
+                var newEnemy = Instantiate(Shadows, spawn1);
+                newEnemy.transform.parent = gameObject.transform;
+                spawn = false;
             }
             else
             {
-                timer -= Time.deltaTime;
+                var newEnemy = Instantiate(Shadows, spawn1);
+                newEnemy.transform.parent = gameObject.transform;
+                spawn = false;
             }
         }
-        else
-        {
-            timer = spawnRate;
-        }
-
     }
 }

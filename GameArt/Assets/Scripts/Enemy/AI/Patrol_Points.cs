@@ -17,7 +17,7 @@ public class Patrol_Points : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (pPoints[0] == null)
+        if (pPoints[0] == null)
         {
             Debug.Log("setting");
             spawner = GetComponentInParent<Enemy_Spawner>();
@@ -25,6 +25,6 @@ public class Patrol_Points : MonoBehaviour
             {
                 pPoints[i] = spawner.waypoints[i];
             }
-        }*/
+        }
     }
 }

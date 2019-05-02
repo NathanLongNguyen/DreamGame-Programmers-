@@ -50,6 +50,8 @@ public class CameraMove : MonoBehaviour {
             }
         }
 
+        //delta.z = current.position.z;
+
         //Moving the camera
         smoothingPosition = transform.position + delta;
         //Creating a "smoother" transition/movement with Lerp

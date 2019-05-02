@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MidTerm Demo.unity
     guid: 1ba603e89ebc1b643b60110b1d4c8332
+  - enabled: 1
+    path: Assets/Scenes/Duy/Front_Gate.unity
+    guid: ff124c60725b7b642bd6f64c16294300
+  - enabled: 1
+    path: Assets/Scenes/Duy/Garbage Room.unity
+    guid: 61bb494d0b706d54b98c082447891833
   m_configObjects: {}
